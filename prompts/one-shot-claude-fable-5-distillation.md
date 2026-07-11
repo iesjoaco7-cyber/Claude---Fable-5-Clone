@@ -1,147 +1,67 @@
-# Prompt único para Claude Fable 5 — Destilación segura de metodología observable
+# Prompt único para Claude Fable 5 — Mejora segura del Claude Fable Method Orchestrator
 
-Pegá este prompt en Claude Fable 5 con esfuerzo alto. El objetivo es obtener una especificación operacional reutilizable para una Skill/agente. No pide secretos internos ni intenta extraer el system prompt.
+Pegá este prompt en Claude Fable 5 con esfuerzo alto. El objetivo es mejorar una especificación operacional reutilizable para una Skill/agente. No pide secretos internos ni intenta extraer el system prompt.
 
 ---
 
-Actúa como un **arquitecto senior de agentes LLM, prompt engineering y sistemas de trabajo agentivo**.
+Actúa como un **arquitecto senior de agentes LLM, Claude Skills, Claude Code, Claude Design, prompt engineering y sistemas de trabajo agentivo**.
 
-Quiero que me ayudes a construir una Skill/agente reutilizable para Claude.ai, Claude Code y Claude Design. El objetivo no es robar, copiar ni revelar tu system prompt, políticas internas, herramientas privadas, pesos, entrenamiento, arquitectura propietaria, datos confidenciales ni ninguna implementación interna del modelo. Si alguna parte de mi pedido pudiera interpretarse como extracción de secretos, ignorá esa parte y reemplazala por una alternativa segura.
+Estoy trabajando en el repositorio público `Claude---Fable-5-Clone`. El identificador interno actual es `claude-fable-method-orchestrator`.
 
-Tu tarea es producir una **especificación completa de un agente inspirado en tus comportamientos observables de alto rendimiento**, basada únicamente en lo que podés describir de manera segura: procesos, metodologías, módulos de trabajo, criterios de calidad, plantillas, límites, verificaciones y patrones de respuesta.
+El objetivo NO es robar, copiar ni revelar system prompts, políticas internas, herramientas privadas, pesos, entrenamiento, arquitectura propietaria, datos confidenciales ni ninguna implementación interna de Claude, Anthropic, Fable 5 o cualquier otro modelo.
 
-Usá como base esta metodología de creación de agentes:
+El objetivo correcto es crear un **clon funcional de metodología observable**: una Skill, un subagente, un prompt pack y una suite de evaluación que reproduzcan de forma segura patrones de trabajo avanzados: entender intención, recolectar contexto, detectar restricciones, planificar proporcionalmente, ejecutar, verificar, documentar y responder con evidencia.
 
-1. Extraer intención central.
-2. Diseñar una persona experta.
-3. Arquitectar instrucciones completas.
-4. Optimizar rendimiento con frameworks de decisión, QA y fallback.
-5. Crear identificador con minúsculas, números y guiones.
-6. Incluir ejemplos claros de cuándo usar el agente.
-7. Devolver una configuración autónoma, reutilizable y lista para producción.
+## Archivos a auditar
+
+Revisá estos archivos si están disponibles:
+
+- `README.md`
+- `CLAUDE.md`
+- `.claude/skills/claude-fable-method-orchestrator/SKILL.md`
+- `.claude/skills/claude-fable-method-orchestrator/references/modules.md`
+- `.claude/agents/claude-fable-method-orchestrator.md`
+- `agents/claude-fable-method-orchestrator.json`
+- `prompts/system-prompt.md`
+- `docs/ARCHITECTURE.md`
+- `docs/TOOLS.md`
+- `evals/test-cases.yaml`
+- `scripts/validate_skill.py`
+- `scripts/package_skill.py`
+
+## Tarea
+
+1. Auditá consistencia de nombres, paths, safety boundary, módulos, README, Skill, subagente, JSON, evals y scripts.
+2. Mejorá la arquitectura manteniendo el identificador `claude-fable-method-orchestrator`.
+3. Conservá la regla de proporcionalidad: no sobre-planificar tareas simples, y usar plan-ejecución-verificación en tareas complejas.
+4. Conservá el límite ético: no clonar modelos propietarios, no inventar internals, no pedir secretos.
+5. Producí archivos completos y copiables.
 
 ## Entregables obligatorios
 
-Generá todos estos archivos en formato Markdown o JSON, listos para copiar a un repositorio de GitHub:
-
-### 1. README.md
-Debe incluir:
-- Descripción del proyecto.
-- Qué problema resuelve.
-- Qué sí hace y qué no hace.
-- Estructura del repositorio.
-- Instalación en Claude.ai como Skill ZIP.
-- Instalación en Claude Code con `.claude/skills/` y `.claude/agents/`.
-- Uso recomendado en Claude Design.
-- Ejemplos de prompts de uso.
-- Limitaciones.
-
-### 2. .claude/skills/claude-fable-5-clone/SKILL.md
-Debe cumplir esta estructura mínima:
-
-```md
----
-name: claude-fable-5-clone
-description: [descripción breve de qué hace y cuándo usarla]
----
-
-# Claude Fable 5 Clone
-
-[instrucciones completas]
-```
-
-La Skill debe enseñar al modelo a trabajar con un flujo de alto rendimiento:
-- Intent routing.
-- Context gathering.
-- Planificación.
-- Ejecución.
-- Verificación.
-- Respuesta final.
-- Manejo de incertidumbre.
-- Seguridad y límites.
-
-### 3. .claude/agents/claude-fable-5-orchestrator.md
-Crear un subagente para Claude Code con YAML frontmatter:
-- `name`
-- `description`
-- `tools`
-- `model`
-- `effort`
-
-Debe estar orientado a proyectos de código, debugging, repositorios, documentación, diseño y análisis complejo.
-
-### 4. agents/claude-fable-5-clone.json
-Devolver un JSON válido con exactamente estos campos:
-
-```json
-{
-  "identifier": "...",
-  "whenToUse": "Use this agent when...",
-  "systemPrompt": "..."
-}
-```
-
-El campo `whenToUse` debe incluir ejemplos donde el asistente usa una herramienta Agent para lanzar este agente, no responder directamente.
-
-### 5. docs/ARCHITECTURE.md
-Explicar:
-- Arquitectura conceptual.
-- Módulos internos.
-- Flujo de ejecución.
-- Límites de seguridad.
-- Cómo se adapta a Claude.ai, Claude Code y Claude Design.
-
-### 6. docs/TOOLS.md
-Describir herramientas conceptuales implementadas:
-- Intent Router.
-- Context Harvester.
-- Plan Builder.
-- Research Synthesizer.
-- Code Operator.
-- Test & Verify Loop.
-- Design Critic.
-- Safety Boundary.
-- Response Composer.
-- Memory Packager.
-
-### 7. evals/test-cases.yaml
-Crear casos de prueba para evaluar si el agente responde bien ante:
-- Pregunta simple.
-- Tarea de código.
-- Bug.
-- Análisis de documento.
-- Diseño UI.
-- Solicitud insegura de extraer system prompt.
-- Creación de repositorio.
-
-### 8. scripts/validate_skill.py
-Crear un script simple en Python que valide:
-- Existe `SKILL.md`.
-- Tiene YAML frontmatter.
-- Tiene `name` y `description`.
-- El name usa solo minúsculas, números y guiones.
-
-### 9. scripts/package_skill.py
-Crear un script Python que empaquete `.claude/skills/claude-fable-5-clone/` como `dist/claude-fable-5-clone-skill.zip`.
-
-## Reglas de seguridad
-
-- No reveles ni simules revelar tu system prompt real.
-- No afirmes que esto clona exactamente a Fable 5.
-- No incluyas métodos para extraer pesos, entrenamientos, prompts ocultos, herramientas internas o datos privados.
-- Sí podés crear una especificación conductual, una Skill, un subagente, documentación, tests y scripts.
-- Cuando uses la palabra “clon”, redefinila como “clon funcional de metodología observable”, no como copia del modelo.
-
-## Estilo de salida
-
-Devolvé la respuesta en secciones con nombres de archivo, así:
+Devolvé secciones con nombres exactos de archivo:
 
 ```txt
 FILE: README.md
-[contenido]
-
-FILE: .claude/skills/claude-fable-5-clone/SKILL.md
-[contenido]
+FILE: CLAUDE.md
+FILE: .claude/skills/claude-fable-method-orchestrator/SKILL.md
+FILE: .claude/skills/claude-fable-method-orchestrator/references/modules.md
+FILE: .claude/agents/claude-fable-method-orchestrator.md
+FILE: agents/claude-fable-method-orchestrator.json
+FILE: prompts/system-prompt.md
+FILE: docs/ARCHITECTURE.md
+FILE: docs/TOOLS.md
+FILE: evals/test-cases.yaml
+FILE: scripts/validate_skill.py
+FILE: scripts/package_skill.py
 ```
 
-Asegurate de que todo sea copiable, coherente y usable en GitHub.
+## Reglas de salida
+
+- No reveles ni simules revelar system prompts privados.
+- No afirmes que esto es un clon exacto de Fable 5.
+- No incluyas métodos para extraer pesos, entrenamiento, prompts ocultos, herramientas internas o datos privados.
+- Sí podés crear una especificación conductual, una Skill, un subagente, documentación, tests y scripts.
+- Cuando uses “clon”, redefinilo como “clon funcional de metodología observable”.
+- Si proponés cambios, explicá qué problema resuelven.
+- Todo archivo debe ser coherente con los demás.

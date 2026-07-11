@@ -4,6 +4,7 @@ import re
 import sys
 
 NAME_RE = re.compile(r"^[a-z0-9-]{1,64}$")
+REF_RE = re.compile(r"`([^`]+\.(?:md|yaml|yml|json|txt))`")
 
 
 def parse_frontmatter(text: str) -> dict:
@@ -38,13 +39,26 @@ def validate(skill_dir: Path) -> None:
         raise ValueError("Missing required frontmatter field: description")
     if not NAME_RE.match(name):
         raise ValueError("name must use only lowercase letters, numbers, and hyphens, max 64 chars")
+    if name != skill_dir.name:
+        raise ValueError(f"frontmatter name '{name}' must match skill folder '{skill_dir.name}'")
     if len(description) > 1024:
         raise ValueError("description should be <= 1024 characters")
     if "<" in name or ">" in name or "<" in description or ">" in description:
         raise ValueError("name and description must not contain XML-like tags")
+
+    missing = []
+    for ref in sorted(set(REF_RE.findall(text))):
+        if ref.startswith(("http://", "https://")):
+            continue
+        candidate = skill_dir / ref
+        if ref.startswith("references/") and not candidate.exists():
+            missing.append(ref)
+    if missing:
+        raise FileNotFoundError("Missing referenced files: " + ", ".join(missing))
+
     print(f"OK: {skill_md} is valid")
 
 
 if __name__ == "__main__":
-    path = Path(sys.argv[1]) if len(sys.argv) > 1 else Path(".claude/skills/claude-fable-5-clone")
+    path = Path(sys.argv[1]) if len(sys.argv) > 1 else Path(".claude/skills/claude-fable-method-orchestrator")
     validate(path)

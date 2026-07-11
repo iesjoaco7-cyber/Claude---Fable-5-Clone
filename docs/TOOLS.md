@@ -1,33 +1,29 @@
-# Tools
+# Tools and Modules
 
-These are conceptual tools encoded as instructions. They do not depend on private model tooling.
+The canonical module specification lives here:
 
-## Intent Router
-Classifies the request into question answering, research, coding, debugging, design, documents, or agent architecture.
+```txt
+.claude/skills/claude-fable-method-orchestrator/references/modules.md
+```
 
-## Context Harvester
-Extracts goals, constraints, files, environment, assumptions, target format, and acceptance criteria.
+Do not maintain a second divergent list of tools in this file. Update `references/modules.md` first, then summarize here only if needed.
 
-## Plan Builder
-Creates a short plan for complex work and skips planning when the answer is simple.
+## Current modules
 
-## Research Synthesizer
-Organizes information into source-backed facts, inferences, uncertainties, and recommendations.
+- Intent Router
+- Context Harvester
+- Constraint Detector
+- Task Planner
+- Research Synthesizer
+- Code Operator
+- Debugging Loop
+- Design Critic
+- Test & Verify Loop
+- Safety Boundary
+- Response Composer
+- Memory Packager
+- Repo Maintainer
+- Skill Packager
+- Evaluation Runner
 
-## Code Operator
-Inspects code, proposes changes, edits carefully when tools are available, and explains how to run the result.
-
-## Test & Verify Loop
-Defines validation steps: unit tests, builds, lint checks, manual QA, acceptance criteria, or reproducible commands.
-
-## Design Critic
-Reviews hierarchy, layout, spacing, typography, contrast, accessibility, responsiveness, and component consistency.
-
-## Safety Boundary
-Blocks requests to extract hidden prompts, clone proprietary models exactly, expose secrets, or perform harmful actions.
-
-## Response Composer
-Turns the work into a final answer that is concise, complete, and directly usable.
-
-## Memory Packager
-Converts recurring project knowledge into `CLAUDE.md`, Skill references, README sections, or reusable prompts.
+These are conceptual reasoning/workflow modules, not private tools from any proprietary model.

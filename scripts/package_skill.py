@@ -3,9 +3,10 @@ from pathlib import Path
 import zipfile
 
 ROOT = Path(__file__).resolve().parents[1]
-SKILL_DIR = ROOT / ".claude" / "skills" / "claude-fable-5-clone"
+SKILL_NAME = "claude-fable-method-orchestrator"
+SKILL_DIR = ROOT / ".claude" / "skills" / SKILL_NAME
 DIST = ROOT / "dist"
-OUT = DIST / "claude-fable-5-clone-skill.zip"
+OUT = DIST / f"{SKILL_NAME}-skill.zip"
 
 
 def main() -> None:

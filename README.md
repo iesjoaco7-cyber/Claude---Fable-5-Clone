@@ -1,41 +1,54 @@
 # Claude---Fable-5-Clone
 
-**Nombre público del repositorio:** `Claude---Fable-5-Clone`
+**Nombre público del repositorio:** `Claude---Fable-5-Clone`  
+**Nombre interno actual de Skill/agent:** `claude-fable-method-orchestrator`  
+**Nombre público del agente:** `Claude Fable Method Orchestrator`
 
-**Nombre interno de Skill/agent:** `claude-fable-5-clone`
-
-> Skill + subagent + prompt-pack para construir un **agente LLM reutilizable inspirado en la metodología de trabajo de Claude Fable 5**, sin intentar copiar pesos, sistema interno, prompts privados ni herramientas propietarias.
+> Skill + subagent + prompt-pack para construir un **agente LLM reutilizable inspirado en una metodología observable de trabajo avanzado**, sin intentar copiar pesos, sistema interno, prompts privados, herramientas propietarias ni políticas internas de ningún modelo.
 
 ## Qué es este proyecto
 
-Este repositorio usa el nombre que elegiste, `Claude---Fable-5-Clone`, pero mantiene una frontera ética y técnica: no intenta copiar secretos internos, pesos, prompts ocultos ni herramientas privadas de Claude/Fable. Su objetivo es crear un **clon funcional de metodología**: una Skill portable, un subagente y un prompt pack para reproducir flujos de trabajo avanzados y verificables.
+`Claude---Fable-5-Clone` es un repositorio para usar una metodología agentiva reutilizable en Claude.ai, Claude Code y Claude Design. Aunque el nombre público conserva la idea original de “Fable 5 Clone”, el proyecto no intenta clonar un modelo propietario. El objetivo es crear un **clon funcional de metodología observable**: una capa de instrucciones, módulos, verificaciones y plantillas para trabajar de forma más sistemática.
 
-`claude-fable-5-clone` es un repositorio listo para GitHub que contiene:
+El agente nuevo se llama `claude-fable-method-orchestrator` y trabaja con este flujo:
 
-- Una **Claude Skill** portable para Claude.ai y Claude Code.
-- Un **subagente de Claude Code** para análisis, planificación, implementación y verificación.
-- Un **prompt único seguro** para pedirle a Fable 5 que genere una especificación de agente basada en comportamientos observables, no en secretos internos.
-- Documentación de arquitectura, herramientas conceptuales y flujo de uso.
-- Scripts para validar y empaquetar la Skill.
+```txt
+intención → contexto → restricciones → plan proporcional → ejecución → verificación → entrega
+```
 
-Este proyecto no entrena ni clona un modelo fundacional. En lugar de eso, crea una capa reutilizable de instrucciones, checklists, herramientas conceptuales, rutinas de verificación y plantillas para que cualquier modelo capaz pueda responder con un estilo de trabajo más sistemático, profundo y agentivo.
+## Qué problema resuelve
+
+Los modelos suelen fallar cuando una tarea es larga, ambigua o técnica: empiezan a responder antes de entender el contexto, planifican demasiado para preguntas simples, hacen cambios sin verificar o mezclan hechos con suposiciones. Este repo convierte ese trabajo en una metodología explícita y reutilizable.
 
 ## Lo que sí hace
 
-- Estandariza cómo el agente entiende preguntas, consultas, problemas, análisis y tareas de código.
-- Aplica un flujo tipo: **intención → contexto → plan → ejecución → verificación → respuesta final**.
-- Divide tareas grandes en módulos: investigación, planificación, código, debugging, diseño, documentación y control de calidad.
-- Permite usarlo en distintos proyectos mediante GitHub.
-- Se puede subir como Skill a Claude.ai o usar dentro de `.claude/skills/` en Claude Code.
-- Incluye un subagente para Claude Code dentro de `.claude/agents/`.
+- Estandariza cómo responder preguntas, consultas, problemas, análisis, debugging, código, investigación, diseño y documentación.
+- Usa una **regla de proporcionalidad**: tareas simples reciben respuestas simples; tareas complejas reciben plan, ejecución y verificación.
+- Incluye una **Claude Skill** portable para Claude.ai y Claude Code.
+- Incluye un **subagente de Claude Code** para repositorios, debugging, auditorías, refactors y documentación.
+- Incluye un **prompt canónico** reutilizable en `prompts/system-prompt.md`.
+- Incluye **15 módulos conceptuales** documentados en `references/modules.md`.
+- Incluye **12 casos de evaluación** con señales de fallo y criterios de aprobación.
+- Puede versionarse en GitHub y reutilizarse en cualquier proyecto.
 
 ## Lo que no hace
 
-- No extrae el system prompt de Fable 5.
-- No copia pesos, parámetros ni arquitectura privada.
-- No intenta saltar políticas de seguridad.
-- No promete una copia exacta de Fable 5.
-- No convierte una Skill en un modelo entrenado “de por vida”. Una Skill persiste como archivo reutilizable; el comportamiento final depende del modelo donde la uses.
+- No extrae system prompts ocultos.
+- No copia pesos, parámetros, arquitectura privada ni entrenamiento de modelos.
+- No reproduce herramientas internas ni políticas privadas.
+- No intenta saltar restricciones de seguridad.
+- No promete una copia exacta de Fable 5 ni de ningún modelo propietario.
+- No entrena un modelo “de por vida”; una Skill es una capa reusable de instrucciones y archivos.
+
+## Regla central de proporcionalidad
+
+```txt
+Tarea trivial → respuesta directa, sin plan ni bloques pesados.
+Tarea moderada → plan interno, ejecución y nota breve de verificación.
+Tarea compleja → plan visible breve, ejecución por fases, verificación con evidencia.
+```
+
+Ejemplo: para “¿qué es una subconsulta SQL?” el agente debe responder directo. Para “auditá este repo y mejorá la Skill”, debe inspeccionar archivos, planificar, proponer cambios y verificar.
 
 ## Estructura del repositorio
 
@@ -47,41 +60,52 @@ Claude---Fable-5-Clone/
 ├─ .gitignore
 ├─ .claude/
 │  ├─ skills/
-│  │  └─ claude-fable-5-clone/
+│  │  └─ claude-fable-method-orchestrator/
 │  │     ├─ SKILL.md
 │  │     └─ references/
-│  │        └─ agent-prompt-agent-creation-architect.md
+│  │        └─ modules.md
 │  └─ agents/
-│     └─ claude-fable-5-orchestrator.md
+│     └─ claude-fable-method-orchestrator.md
 ├─ agents/
-│  └─ claude-fable-5-clone.json
+│  └─ claude-fable-method-orchestrator.json
 ├─ prompts/
+│  ├─ system-prompt.md
 │  └─ one-shot-claude-fable-5-distillation.md
 ├─ docs/
 │  ├─ ARCHITECTURE.md
 │  ├─ TOOLS.md
 │  ├─ USAGE_CLAUDE_WEB_CODE_DESIGN.md
+│  ├─ UPGRADE_GUIDE.md
 │  └─ agent-prompt-agent-creation-architect.md
 ├─ examples/
 │  └─ example-requests.md
 ├─ evals/
 │  └─ test-cases.yaml
-└─ scripts/
-   ├─ package_skill.py
-   └─ validate_skill.py
+├─ scripts/
+│  ├─ package_skill.py
+│  └─ validate_skill.py
+└─ dist/
+   └─ claude-fable-method-orchestrator-skill.zip
 ```
 
 ## Instalación rápida en Claude.ai versión web
 
-1. Activá **Code execution and file creation** en la configuración de Claude.
-2. Entrá a **Customize → Skills**.
-3. Subí el ZIP de la Skill: `claude-fable-5-clone-skill.zip`.
+1. Entrá a Claude.ai.
+2. Abrí **Customize → Skills**.
+3. Subí el ZIP generado:
+
+```txt
+dist/claude-fable-method-orchestrator-skill.zip
+```
+
 4. Activá la Skill.
 5. En un chat nuevo, probá:
 
 ```txt
-Usá la skill claude-fable-5-clone para analizar este problema como un agente de alto rendimiento: [pegá tu tarea]
+Usá la skill claude-fable-method-orchestrator para analizar este problema como un agente de alto rendimiento: [pegá tu tarea]
 ```
+
+Importante: no tengas activas a la vez la Skill vieja `claude-fable-5-clone` y la nueva `claude-fable-method-orchestrator`, porque competirían por activación.
 
 ## Instalación rápida en Claude Code
 
@@ -89,68 +113,57 @@ Dentro de cualquier proyecto:
 
 ```bash
 mkdir -p .claude/skills .claude/agents
-cp -R Claude---Fable-5-Clone/.claude/skills/claude-fable-5-clone .claude/skills/
-cp Claude---Fable-5-Clone/.claude/agents/claude-fable-5-orchestrator.md .claude/agents/
+cp -R Claude---Fable-5-Clone/.claude/skills/claude-fable-method-orchestrator .claude/skills/
+cp Claude---Fable-5-Clone/.claude/agents/claude-fable-method-orchestrator.md .claude/agents/
 ```
 
 Luego, en Claude Code:
 
 ```txt
-Usá la skill claude-fable-5-clone para planificar, implementar y verificar esta tarea.
-```
-
-O invocá el subagente:
-
-```txt
-Use the claude-fable-5-orchestrator agent to analyze this codebase and produce a safe implementation plan.
+Use the claude-fable-method-orchestrator agent to audit this repo and produce a safe implementation plan.
 ```
 
 ## Uso en Claude Design
 
-Claude Design puede aprovechar este repositorio como contexto del proyecto:
+Claude Design puede usar el repo como contexto de diseño:
 
-1. Subí `CLAUDE.md`, `docs/ARCHITECTURE.md`, `docs/TOOLS.md` y el `SKILL.md` al proyecto o espacio de diseño.
-2. Usá el prompt de `prompts/one-shot-claude-fable-5-distillation.md` para generar un “Design Agent Profile”.
-3. Pedile a Claude Design que actúe con el protocolo de diseño visual incluido en la Skill.
+1. Subí `CLAUDE.md`, `docs/ARCHITECTURE.md`, `docs/TOOLS.md`, `prompts/system-prompt.md` y el `SKILL.md`.
+2. Pedile que aplique el modo **Design Critic**.
+3. Usalo para revisar jerarquía visual, espaciado, tipografía, contraste, accesibilidad, responsive y consistencia de componentes.
 
-## Herramientas implementadas dentro del agente
+## Herramientas/módulos internos
 
-Estas herramientas son **módulos de razonamiento y trabajo**, no herramientas privadas de Fable 5:
-
-| Herramienta | Función |
-|---|---|
-| Intent Router | Clasifica si la tarea es pregunta, código, investigación, diseño, documento, debugging o análisis. |
-| Context Harvester | Extrae requisitos, restricciones, archivos, objetivos y supuestos. |
-| Plan Builder | Divide tareas complejas en fases ejecutables. |
-| Research Synthesizer | Organiza información y separa hechos, inferencias y dudas. |
-| Code Operator | Lee, modifica y explica código cuando el entorno lo permite. |
-| Test & Verify Loop | Define pruebas, criterios de aceptación y verificación. |
-| Design Critic | Revisa UX/UI, consistencia visual y fidelidad de diseño. |
-| Safety Boundary | Evita extracción de secretos, abuso, acciones peligrosas o afirmaciones falsas. |
-| Response Composer | Entrega respuestas claras, accionables y adaptadas al usuario. |
-| Memory Packager | Convierte aprendizajes del proyecto en reglas reutilizables. |
-
-## Flujo principal del agente
+Los módulos son conceptuales; no son herramientas privadas de ningún modelo. La especificación completa está en:
 
 ```txt
-1. Entender la tarea.
-2. Detectar restricciones y riesgos.
-3. Elegir modo de trabajo.
-4. Crear plan breve si la tarea es compleja.
-5. Ejecutar por pasos.
-6. Verificar con criterios concretos.
-7. Entregar resultado final con próximos pasos.
+.claude/skills/claude-fable-method-orchestrator/references/modules.md
 ```
 
-## Prompt único para pedirle a Fable 5 una especificación segura
-
-El prompt está en:
+Módulos incluidos:
 
 ```txt
-prompts/one-shot-claude-fable-5-distillation.md
+Intent Router
+Context Harvester
+Constraint Detector
+Task Planner
+Research Synthesizer
+Code Operator
+Debugging Loop
+Design Critic
+Test & Verify Loop
+Safety Boundary
+Response Composer
+Memory Packager
+Repo Maintainer
+Skill Packager
+Evaluation Runner
 ```
 
-Ese prompt está diseñado para obtener una **especificación operacional reutilizable**: flujos, criterios, módulos, formatos, tests y hábitos de respuesta. No solicita prompts ocultos, políticas internas, datos privados, pesos ni arquitectura propietaria.
+## Validar la Skill
+
+```bash
+python scripts/validate_skill.py .claude/skills/claude-fable-method-orchestrator
+```
 
 ## Crear el ZIP de la Skill
 
@@ -161,24 +174,26 @@ python scripts/package_skill.py
 Resultado:
 
 ```txt
-dist/claude-fable-5-clone-skill.zip
+dist/claude-fable-method-orchestrator-skill.zip
 ```
 
-## Validar la Skill
+## Ejecutar evaluación manual
 
-```bash
-python scripts/validate_skill.py .claude/skills/claude-fable-5-clone
+Los casos están en:
+
+```txt
+evals/test-cases.yaml
 ```
 
-## Subir a GitHub desde cero
+Incluyen pruebas para consulta simple, problema técnico, debugging, análisis de código, planificación, diseño UI/UX, investigación con incertidumbre, documentación, refactorización, explicación educativa, tarea ambigua y solicitud insegura de extracción.
+
+## Comandos Git para actualizar
 
 ```bash
-git init
+git status
 git add .
-git commit -m "Initial claude fable 5 clone skill"
-git branch -M main
-git remote add origin https://github.com/TU_USUARIO/Claude---Fable-5-Clone.git
-git push -u origin main
+git commit -m "Improve fable method orchestrator"
+git push
 ```
 
 ## Licencia
