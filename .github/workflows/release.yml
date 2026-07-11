@@ -1,0 +1,29 @@
+name: Release
+
+on:
+  push:
+    tags:
+      - "v*.*.*"
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Validate and package
+        run: |
+          python -m compileall scripts
+          python scripts/validate_skill.py .claude/skills/claude-fable-method-orchestrator
+          python scripts/package_skill.py
+          python scripts/check_repo.py
+      - name: Create GitHub Release
+        uses: softprops/action-gh-release@v2
+        with:
+          files: dist/claude-fable-method-orchestrator-skill.zip
+          generate_release_notes: true
